@@ -1,25 +1,14 @@
 import React from 'react';
 
-export default class SignUpForm extends React.Component {
+export default class SignUpFormAndDisplay extends React.Component {
   constructor() {
     super();
     this.state = {
       username: '',
       email: '',
       city: 'Sydney',
+      signUpDetails: null
     };
-  }
-
-  handleUsernameChange(e) {
-    this.setState({ username: e.target.value });
-  }
-
-  handleEmailChange(e) {
-    this.setState({ email: e.target.value });
-  }
-
-  handleCityChange(e) {
-    this.setState({ city: e.target.value });
   }
 
   handleFieldChange(e) {
@@ -30,11 +19,45 @@ export default class SignUpForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('Sumitted:');
-    console.log(this.state);
+    const { username, email, city } = this.state;
+
+    this.setState({
+      username: '',
+      email: '',
+      city: 'Sydney',
+      signUpDetails: {
+        username,
+        email,
+        city,
+      }
+    });
   }
 
-  render() {
+  renderDisplay() {
+    if (!this.state.signUpDetails) {
+      return null;
+    }
+
+    return (
+      <div className="panel panel-default" style={{ width: 300, padding: 15, margin: 20 }}>
+        <h3>Your signup details</h3>
+        <div>
+          <label>Username</label>
+          <div>{this.state.signUpDetails.username}</div>
+        </div>
+        <div>
+          <label>Email</label>
+          <div>{this.state.signUpDetails.email}</div>
+        </div>
+        <div>
+          <label>City</label>
+          <div>{this.state.signUpDetails.city}</div>
+        </div>
+      </div>
+    )
+  }
+
+  renderForm() {
     return (
       <form style={{ width: 300, margin: 20 }} onSubmit={this.handleSubmit.bind(this)}>
         <div className="form-group">
@@ -55,6 +78,15 @@ export default class SignUpForm extends React.Component {
         </div>
         <button type="submit" className="btn btn-primary">Sign up</button>
       </form>
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        {this.renderForm()}
+        {this.renderDisplay()}
+      </div>
     );
   }
 }
