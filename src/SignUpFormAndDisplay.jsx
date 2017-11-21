@@ -7,7 +7,7 @@ export default class SignUpFormAndDisplay extends React.Component {
       username: '',
       email: '',
       city: 'Sydney',
-      signUpDetails: null
+      signUpDetails: null,
     };
   }
 
@@ -29,7 +29,7 @@ export default class SignUpFormAndDisplay extends React.Component {
         username,
         email,
         city,
-      }
+      },
     });
   }
 
@@ -54,7 +54,7 @@ export default class SignUpFormAndDisplay extends React.Component {
           <div>{this.state.signUpDetails.city}</div>
         </div>
       </div>
-    )
+    );
   }
 
   renderForm() {

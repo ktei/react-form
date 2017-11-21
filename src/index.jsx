@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SignUpForm from './SignUpForm';
+import TodoApp from './todo/App';
 
-ReactDOM.render(<SignUpForm />, document.getElementById('root'));
+ReactDOM.render(<TodoApp />, document.getElementById('root'));
