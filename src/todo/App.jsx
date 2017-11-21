@@ -73,9 +73,7 @@ export default class App extends React.Component {
       }
       return x;
     });
-    this.setState({
-      items: newItems,
-    });
+    this.setState({ items: newItems });
   }
 
   handleDeleteItem(item) {
